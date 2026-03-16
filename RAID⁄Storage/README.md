@@ -48,7 +48,7 @@ UUID is used instead of device name (e.g. `/dev/sda`) because device names can c
 ```bash
 UUID=<your-uuid> /srv/storage ext4 defaults 0 2
 ```
-
+ 
 ## File Sharing
 
 Samba runs in Docker and shares `/srv/storage/files` over the local network. See [`docker-compose.yml`](docker-compose.yml) for the full configuration.
