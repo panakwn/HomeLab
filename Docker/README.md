@@ -1,6 +1,6 @@
 # Docker
 
-All services on this server run in Docker containers managed with Docker Compose. I went with Docker because it keeps each service isolated and makes the whole setup reproducible — if something breaks, I can tear it down and bring it back up in seconds.
+All services on this server run in Docker containers managed with Docker Compose. I went with Docker because it keeps each service isolated.
 
 Each service lives in its own folder with a `docker-compose.yml`. All data is stored in volumes on the RAID array at `/srv/storage`, so containers are disposable but data is not.
 
@@ -27,8 +27,3 @@ sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plug
 # Allow running Docker without sudo
 sudo usermod -aG docker $USER
 ```
-
-## Version
-
-- Docker Engine: 29.3.0
-- Docker Compose: included via compose-plugin
