@@ -2,11 +2,18 @@
 
 All services on this server run in Docker containers managed with Docker Compose. I went with Docker because it keeps each service isolated.
 
-Each service lives in its own folder with a `docker-compose.yml`. All data is stored in volumes on the RAID array at `/srv/storage`, so containers are disposable but data is not.
+Each service lives in its own folder with a `docker-compose.yml`. Data is stored in volumes on the RAID array at /srv/storage, which means containers can be deleted and recreated without losing anything.
 
-## Why Docker Compose over plain Docker
-
-Running containers with `docker run` works fine for quick tests, but Compose lets me define everything in a file — ports, volumes, restart policy — and check it into version control. It also makes it easier to manage multiple containers that depend on each other.
+## Why Docker Compose instead of plain `docker run`
+ 
+Running a container with `docker run` works, but the command gets long fast and disappears when the terminal closes. Compose puts everything in a file that stays on disk, can be version-controlled, and is easy to read back later.
+ 
+Instead of:
+```bash
+docker run -d -p 8096:8096 -v /srv/storage/media:/media --restart unless-stopped jellyfin/jellyfin
+```
+ 
+You write it once in `docker-compose.yml` and just run `docker compose up -d` every time.
 
 ## Installation
 
