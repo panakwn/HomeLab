@@ -13,11 +13,19 @@ This is my personal homelab — an old desktop repurposed as a home server. I bu
 - **Samba** — NAS / LAN file sharing
 - **Pi-hole** — DNS server and network-wide ad blocking
 - **Jellyfin** — media streaming server
-- **Nginx Proxy Manager** — reverse proxy for all services
-- **Uptime Kuma** — service monitoring
-- **WireGuard** — remote access VPN
+- **Netdata** — server monitoring, HDD health, and email alerts
+- **Uptime Kuma** — service uptime monitoring
+- **Home Assistant** — home automation
+- **Zigbee2MQTT + Mosquitto** — Zigbee device integration via MQTT
+- **WireGuard** — self-hosted VPN for remote access
 
 (Each service has its own folder with a README explaining the setup and a "docker-compose.yml")
+
+## IoT & Automation
+ 
+Home Assistant runs alongside a Zigbee coordinator (Sonoff ZBDongle-E) and a small network of Zigbee devices — motion/presence sensors, door sensors, and smart bulbs. Device communication goes through Zigbee2MQTT and a local Mosquitto MQTT broker, keeping everything local with no cloud dependency.
+ 
+A separate ESP32-based project controls the power and reset buttons of a PC remotely via Home Assistant.
 
 ## Hardware
 
